@@ -67,6 +67,15 @@ def get_birthday_left():
     next = next.replace(year=next.year + 1)
   return (next - today).days
 
+def get_birthday_left_1():
+  if birthday is None:
+    print('没有设置 BIRTHDAY')
+    return 0
+  next = datetime.strptime(str(today.year) + "-" + birthday, "%Y-%m-%d")
+  if next < nowtime:
+    next = next.replace(year=next.year + 1)
+  return (next - today).days
+
 # 彩虹屁 接口不稳定，所以失败的话会重新调用，直到成功
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
